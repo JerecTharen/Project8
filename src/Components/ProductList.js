@@ -18,7 +18,7 @@ class ProductList extends React.Component{
     };
 
     getProducts = ()=>{
-        fetch('https://my-json-server.typicode.com/tdmichaelis/json-api/products').then((result)=> result.json())
+        fetch('https://my-json-server.typicode.com/tdmichaelis/typicode/products').then((result)=> result.json())
             .then((productResult)=>{
                 // console.log(productResult);
                 this.setState({allProducts: productResult});
