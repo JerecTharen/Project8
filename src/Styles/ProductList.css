@@ -1,0 +1,23 @@
+.productList{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+img{
+    width: 10em;
+    height: auto;
+}
+
+.product{
+    border: black solid 3px;
+    margin: 2em 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 75%;
+}
+
+.product h3 {
+    text-align: center;
+}
