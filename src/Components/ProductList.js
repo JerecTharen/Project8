@@ -25,7 +25,15 @@ class ProductList extends React.Component{
             });
     };
 
+    newProps = (()=>{
+        return {anotherTest: this.props.myTest}
+    })();
+
     render() {
+        console.log(this.props.productRedirect);
+        console.log(this.props.myTest);
+        console.log('props is: ', this.props);
+        console.log('newProps is: ', this.newProps);
         let list;
         if(this.state.allProducts.length > 0){
             // console.log('in if statement', this.state.allProducts);
@@ -34,7 +42,7 @@ class ProductList extends React.Component{
                     // console.log('in if statement');
                     if(product.title.includes(this.state.filterString)){
                         return(
-                            <Product title={product.title} img={product.img} key={product.id} price={product.price} rating={product.rating} />
+                            <Product itemId={product.id} title={product.title} img={product.img} key={product.id} price={product.price} rating={product.rating} anotherTest={this.newProps} prodRed={this.props.productRedirect} />
                         )
                     }
                     else{
@@ -59,7 +67,6 @@ class ProductList extends React.Component{
                 <div className='productDisplay'>
                     {list}
                 </div>
-
             </div>
         )
     }

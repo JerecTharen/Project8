@@ -1,28 +1,25 @@
 import { createStore } from 'redux';
 
 
-
-const initialState = {cart: [],};
+const initialState = {cart: []};
 
 function reducer(state, action){
-    let test;
-    switch(action.type){
-        case 'ADD_TO_CART':
-            test = 5;
-            break;
-        case 'DELETE_FROM_CART':
-            test = 4;
-            break;
-        // case 'DELETE_FROM_CART':
-        //     test = 4;
-        //     break;
-        default:
-            test = 0;
-            break;
+    if (action.type === 'ADD_TO_CART') {
+        return {
+            cart: state.cart.concat(action.item)
+        }
     }
-    console.log(test);
+    else if(action.type === 'DELETE_FROM_CART'){
+        return{
+            cart: state.cart.filter((item=> (item.id !== action.id)))
+        }
+    }
+    else{
+        return state;
+    }
 }
 
 
 const store = createStore(reducer, initialState);
+console.log(store.getState());
 export default store;
