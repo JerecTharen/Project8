@@ -1,21 +1,22 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link,} from "react-router-dom";
 import './App.css';
 
 //components
 import ProductList from './Components/ProductList';
 import Cart from './Components/Cart';
-import store from './Services/ShoppingService';
 import ProductDisplay from './Components/ProductDisplay';
 
+
 class App extends Component {
-    componentDidMount() {
-        store.subscribe(() => this.forceUpdate());
-    }
 
     productRedirect = (itemId)=>{
+        console.log('in prodRed');
         let redUrl = `/product/${itemId}`;
-        return <Redirect to={redUrl} />
+        console.log(redUrl);
+        console.log(this.props.history);
+        // return <Redirect to={redUrl} />
+        // BrowserRouter.history.push(redUrl);
     };
 
   render() {
@@ -29,8 +30,8 @@ class App extends Component {
                 <li><Link to='/cart'>Shopping Cart</Link></li>
 
             </ul>
-            <Route path='/' exact render={()=> <ProductList productRedirect={this.productRedirect} myTest='hellow there' />} />
-            <Route path='/cart' render={()=> <Cart productRedirect={this.productRedirect} />} />
+            <Route path='/' exact render={({history})=> <ProductList productRedirect={this.productRedirect} history={history} />} />
+            <Route path='/cart' render={({history})=> <Cart productRedirect={this.productRedirect} history={history} />} />
             <Route path='/product/:productId' component={ProductDisplay} />
         </Router>
       </div>

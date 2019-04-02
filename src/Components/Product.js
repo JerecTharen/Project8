@@ -1,18 +1,23 @@
 import React from 'react';
+// import {Redirect} from "react-router-dom";
 
 class Product extends React.Component{
 
     displayProduct = ()=>{
-        console.log(this.props.prodRed);
-        this.props.prodRed(this.props.itemId);
+        // console.log(this.props.prodRed);
+        // let itemId = this.props.itemId;
+        // this.props.prodRed(itemId);
+        let redUrl = `/product/${this.props.itemId}`;
+        console.log(redUrl);
+        // return <Redirect to={redUrl}/>
+        this.props.history.push(redUrl);
     };
 
     render() {
         // console.log('props is:', this.props);
-        console.log('testing: ', this.props.anotherTest);
+        // console.log('testing: ', this.props.anotherTest, this.props.blue);
         return (
             <div onClick={this.displayProduct} className='product'>
-                <h1>{this.props.anotherTest}</h1>
                 <h3>{this.props.title}</h3>
                 <img src={this.props.img} alt={this.props.title} />
                 <p>Price: ${this.props.price}</p>

@@ -6,11 +6,15 @@ import Product from './Product';
 
 class Cart extends React.Component{
 
+    componentDidMount() {
+        store.subscribe(() => this.forceUpdate());
+    }
+
     render() {
         console.log(store.getState());
         const state = store.getState();
         let cartItems;
-        if(state.cart){
+        if(state.cart.length > 0){
             cartItems = state.cart.map((cartItem)=>{
                 return <Product productRedirect={this.props.productRedirect} key={cartItem.id} title={cartItem.title} img={cartItem.img} price={cartItem.price} rating={cartItem.rating} />
             });
