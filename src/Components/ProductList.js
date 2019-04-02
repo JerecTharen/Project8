@@ -44,7 +44,16 @@ class ProductList extends React.Component{
                     // console.log('in if statement');
                     if(product.title.includes(this.state.filterString)){
                         return(
-                            <Product itemId={product.id} title={product.title} img={product.img} key={product.id} price={product.price} rating={product.rating} prodRed={this.prodRedirect} history={this.props.history} />
+                            <Product
+                                itemId={product.id}
+                                title={product.title}
+                                img={product.img}
+                                key={product.id}
+                                price={product.price}
+                                rating={product.rating}
+                                prodRed={this.prodRedirect}
+                                history={this.props.history}
+                            />
                         )
                     }
                     else{
@@ -53,7 +62,16 @@ class ProductList extends React.Component{
                 }
                 else{
                     return(
-                        <Product itemId={product.id} title={product.title} img={product.img} key={product.id} price={product.price} rating={product.rating} prodRed={this.prodRedirect} history={this.props.history} />
+                        <Product
+                            itemId={product.id}
+                            title={product.title}
+                            img={product.img}
+                            key={product.id}
+                            price={product.price}
+                            rating={product.rating}
+                            prodRed={this.prodRedirect}
+                            history={this.props.history}
+                        />
                     )
                 }
             });

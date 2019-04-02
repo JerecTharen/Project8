@@ -16,7 +16,7 @@ class Cart extends React.Component{
         let cartItems;
         if(state.cart.length > 0){
             cartItems = state.cart.map((cartItem)=>{
-                return <Product productRedirect={this.props.productRedirect} key={cartItem.id} title={cartItem.title} img={cartItem.img} price={cartItem.price} rating={cartItem.rating} />
+                return <Product productRedirect={this.props.productRedirect} key={cartItem.id} title={cartItem.title} img={cartItem.img} price={cartItem.price} history={this.props.history} rating={cartItem.rating} itemId={cartItem.id} />
             });
         }
         else{
