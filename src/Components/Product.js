@@ -1,14 +1,20 @@
 import React from 'react';
+// import Store from '../Services/ShoppingService';
 // import {Redirect} from "react-router-dom";
 
 class Product extends React.Component{
+    // store = Store.getState();
+
+    // componentDidMount() {
+    //   Store.subscribe(() => this.forceUpdate());
+    // }
 
     displayProduct = ()=>{
         // console.log(this.props.prodRed);
         // let itemId = this.props.itemId;
         // this.props.prodRed(itemId);
         let redUrl = `/product/${this.props.itemId}`;
-        console.log(redUrl);
+        // console.log(redUrl);
         // return <Redirect to={redUrl}/>
         this.props.history.push(redUrl);
     };

@@ -12,9 +12,9 @@ class ProductList extends React.Component{
     };
 
     updateFilterString = (newString)=>{
-        console.log('updating state', newString);
+        // console.log('updating state', newString);
         this.setState({filterString: newString});
-        console.log('new state', this.state.filterString);
+        // console.log('new state', this.state.filterString);
     };
 
     getProducts = ()=>{
@@ -35,7 +35,7 @@ class ProductList extends React.Component{
         // console.log(this.props.myTest);
         // console.log('props is: ', this.props);
         // console.log('newProps is: ', newProps);
-        console.log(this.props.history);
+        // console.log(this.props.history);
         let list;
         if(this.state.allProducts.length > 0){
             // console.log('in if statement', this.state.allProducts);

@@ -4,10 +4,29 @@ import { createStore } from 'redux';
 const initialState = {cart: []};
 
 function reducer(state, action){
+
     if (action.type === 'ADD_TO_CART') {
-        return {
-            cart: state.cart.concat(action.item)
+        // console.log('in add to cart');
+        let inCart = false;
+        state.cart.forEach((item)=>{
+            // console.log('in iteration for', item);
+            // console.log(item.id === action.item.id);
+            if(item.id === action.item.id){
+                // console.log('in if');
+                inCart = true
+            }
+        });
+        if(!inCart){
+            // console.log('not in cart');
+            return {
+                cart: state.cart.concat(action.item)
+            }
         }
+        else{
+            // console.log('in cart');
+            return state;
+        }
+
     }
     else if(action.type === 'DELETE_FROM_CART'){
         return{
@@ -21,5 +40,5 @@ function reducer(state, action){
 
 
 const store = createStore(reducer, initialState);
-console.log(store.getState());
+// console.log(store.getState());
 export default store;

@@ -10,11 +10,24 @@ class ProductDisplay extends React.Component{
 
     theCart = store.getState();
 
-    componentDidMount() {
-        console.log('in mount');
+    inCart = false;
+
+    componentWillMount() {
+        // console.log('hello there');
+        this.theCart.cart.forEach((item)=>{
+            // console.log('iterating for:', item);
+            // console.log(this.props.match.params.productId);
+            // console.log(item.id === Number(this.props.match.params.productId));
+            if(item.id === Number(this.props.match.params.productId)){
+                // console.log('in if statement');
+                this.inCart = true;
+            }
+        });
+        // store.subscribe(() => this.forceUpdate());
+        // console.log('in mount');
         fetch('https://my-json-server.typicode.com/tdmichaelis/typicode/products').then((result)=> result.json())
             .then((productResult)=>{
-                console.log(productResult);
+                // console.log(productResult);
                 productResult.forEach((product)=>{
                     // console.log(product);
                     // console.log(typeof(this.props.match.params.productId));
@@ -26,15 +39,32 @@ class ProductDisplay extends React.Component{
             });
     }
 
+    // resetState=()=>{
+    //     let sameState = this.state.product;
+    //     this.setState({product: sameState});
+    // };
+
     addToCart=()=>{
+        if(!this.inCart){
+            store.dispatch({
+                type: 'ADD_TO_CART',
+                item: this.state.product,
+            });
+        }
+        // this.resetState();
+    };
+
+    removeFromCart = ()=>{
         store.dispatch({
-            type: 'ADD_TO_CART',
-            item: this.state.product,
+            type: "DELETE_FROM_CART",
+            id: this.state.product.id,
         });
+        // this.resetState();
     };
 
     render() {
-        if(this.state.product){
+      // console.log(this.theCart);
+        if(this.state.product && !this.inCart){
             return (
                 <div>
                     <h1>{this.state.product.title}</h1>
@@ -46,6 +76,19 @@ class ProductDisplay extends React.Component{
                     </div>
                 </div>
             )
+        }
+        else if(this.state.product && this.inCart){
+          return (
+            <div>
+              <h1>{this.state.product.title}</h1>
+              <img src={this.state.product.img} alt={this.state.product.title} />
+              <h3>${this.state.product.price}</h3>
+              <h3>Rating: {this.state.product.rating}</h3>
+              <div className='controls'>
+                <button onClick={this.removeFromCart}>REMOVE FROM CART</button>
+              </div>
+            </div>
+          )
         }
         else{
             return(

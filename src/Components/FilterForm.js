@@ -3,7 +3,7 @@ import React from 'react';
 class FilterForm extends React.Component{
 
     runUpdateFilter = ()=>{
-        console.log('running update filter');
+        // console.log('running update filter');
         let filterString = document.getElementById('filter').value;
         this.props.changeFilter(filterString);
         // document.getElementById('fliter').value = '';

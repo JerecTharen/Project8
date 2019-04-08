@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Store from './Services/ShoppingService';
 import { BrowserRouter as Router, Route, Link,} from "react-router-dom";
 import './App.css';
 
@@ -10,16 +11,11 @@ import ProductDisplay from './Components/ProductDisplay';
 
 class App extends Component {
 
-    productRedirect = (itemId)=>{
-        console.log('in prodRed');
-        let redUrl = `/product/${itemId}`;
-        console.log(redUrl);
-        console.log(this.props.history);
-        // return <Redirect to={redUrl} />
-        // BrowserRouter.history.push(redUrl);
-    };
+    componentDidMount() {
+            Store.subscribe(() => this.forceUpdate());
+    }
 
-  render() {
+    render() {
       // console.log(store.state);
     return (
       <div className="App">
@@ -30,8 +26,8 @@ class App extends Component {
                 <li><Link to='/cart'>Shopping Cart</Link></li>
 
             </ul>
-            <Route path='/' exact render={({history})=> <ProductList productRedirect={this.productRedirect} history={history} />} />
-            <Route path='/cart' render={({history})=> <Cart productRedirect={this.productRedirect} history={history} />} />
+            <Route path='/' exact render={({history})=> <ProductList history={history} />} />
+            <Route path='/cart' render={({history})=> <Cart  history={history} />} />
             <Route path='/product/:productId' component={ProductDisplay} />
         </Router>
       </div>

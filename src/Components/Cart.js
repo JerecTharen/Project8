@@ -6,17 +6,31 @@ import Product from './Product';
 
 class Cart extends React.Component{
 
-    componentDidMount() {
-        store.subscribe(() => this.forceUpdate());
-    }
+    // componentDidMount() {
+    //     store.subscribe(() => this.forceUpdate());
+    // }
+
+    // store = store.getState();
+
+    removeFromCart=(id)=>{
+        return ()=>{
+            store.dispatch({
+                type: "DELETE_FROM_CART",
+                id: id,
+            });
+        }
+    };
 
     render() {
-        console.log(store.getState());
+        // console.log(store.getState());
         const state = store.getState();
         let cartItems;
         if(state.cart.length > 0){
             cartItems = state.cart.map((cartItem)=>{
-                return <Product productRedirect={this.props.productRedirect} key={cartItem.id} title={cartItem.title} img={cartItem.img} price={cartItem.price} history={this.props.history} rating={cartItem.rating} itemId={cartItem.id} />
+                return <div key={cartItem.id}>
+                    <Product productRedirect={this.props.productRedirect} title={cartItem.title} img={cartItem.img} price={cartItem.price} history={this.props.history} rating={cartItem.rating} itemId={cartItem.id} />
+                    <button onClick={this.removeFromCart(cartItem.id)}>REMOVE FROM CART</button>
+                </div>
             });
         }
         else{
