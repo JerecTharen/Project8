@@ -2,7 +2,7 @@ import React from 'react';
 import '../Styles/ProductList.css';
 
 import store from '../Services/ShoppingService';
-import Product from './Product';
+import Product from './CartProduct';
 
 class Cart extends React.Component{
 
@@ -28,7 +28,7 @@ class Cart extends React.Component{
         if(state.cart.length > 0){
             cartItems = state.cart.map((cartItem)=>{
                 return <div key={cartItem.id}>
-                    <Product productRedirect={this.props.productRedirect} title={cartItem.title} img={cartItem.img} price={cartItem.price} history={this.props.history} rating={cartItem.rating} itemId={cartItem.id} />
+                    <Product amount={cartItem.amount} productRedirect={this.props.productRedirect} title={cartItem.title} img={cartItem.img} price={cartItem.price} history={this.props.history} rating={cartItem.rating} itemId={cartItem.id} />
                     <button onClick={this.removeFromCart(cartItem.id)}>REMOVE FROM CART</button>
                 </div>
             });

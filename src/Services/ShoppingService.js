@@ -18,15 +18,39 @@ function reducer(state, action){
         });
         if(!inCart){
             // console.log('not in cart');
+            let newItem = action.item;
+            newItem.amount = 1;
             return {
-                cart: state.cart.concat(action.item)
+                cart: state.cart.concat(newItem)
             }
         }
         else{
             // console.log('in cart');
-            return state;
+            let newCart = state.cart.map((item)=>{
+                if(item.id === action.item.id){
+                    item.amount++;
+                    return item;
+                }
+                else{
+                    return item;
+                }
+            });
+            return {
+                cart: newCart,
+            };
         }
 
+    }
+    else if(action.type === 'UPDATE_AMOUNT'){
+        let newCart = state.cart.map((item)=>{
+            if(action.item.id === item.id){
+                let newItem = item;
+                newItem.amount = action.amount;
+                return newItem;
+            }
+            else return item;
+        });
+        return newCart;
     }
     else if(action.type === 'DELETE_FROM_CART'){
         return{
