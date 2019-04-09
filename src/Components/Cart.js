@@ -6,14 +6,15 @@ import Product from './CartProduct';
 
 class Cart extends React.Component{
 
-    // componentDidMount() {
-    //     store.subscribe(() => this.forceUpdate());
-    // }
+    componentDidMount() {
+        // store.subscribe(() => this.forceUpdate());
 
-    // store = store.getState();
+    }
+
+    // state = store.getState();
 
     render() {
-        console.log(store.getState());
+        // console.log(store.getState());
         const state = store.getState();
         let cartItems;
         if(state.cart.length > 0){

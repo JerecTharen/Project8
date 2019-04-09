@@ -30,3 +30,8 @@ img{
 .cartItemControls input{
     width: 25%;
 }
+
+#prodDisplayImg{
+    width: 20em;
+    height: auto;
+}

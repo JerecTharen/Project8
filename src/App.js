@@ -28,7 +28,7 @@ class App extends Component {
             </ul>
             <Route path='/' exact render={({history})=> <ProductList history={history} />} />
             <Route path='/cart' render={({history})=> <Cart  history={history} />} />
-            <Route path='/product/:productId' component={ProductDisplay} />
+            <Route path='/product/:productId' render={({history, match})=> <ProductDisplay  history={history} match={match} />} />
         </Router>
       </div>
     );

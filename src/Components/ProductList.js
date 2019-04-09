@@ -17,13 +17,21 @@ class ProductList extends React.Component{
         // console.log('new state', this.state.filterString);
     };
 
-    getProducts = ()=>{
+    // getProducts = ()=>{
+    //     fetch('https://my-json-server.typicode.com/tdmichaelis/typicode/products').then((result)=> result.json())
+    //         .then((productResult)=>{
+    //             // console.log(productResult);
+    //             this.setState({allProducts: productResult});
+    //         });
+    // };
+
+    componentWillMount() {
         fetch('https://my-json-server.typicode.com/tdmichaelis/typicode/products').then((result)=> result.json())
             .then((productResult)=>{
                 // console.log(productResult);
                 this.setState({allProducts: productResult});
             });
-    };
+    }
 
     prodRedirect = (itemId)=>{
         console.log(itemId);
@@ -79,7 +87,7 @@ class ProductList extends React.Component{
         }
         else{
             list = <p>Sorry, but it appears we are out of stock! Check in later!</p>;
-            this.getProducts();
+            // this.getProducts();
         }
         return (
             <div className='productList'>

@@ -3,7 +3,7 @@ import Store from '../Services/ShoppingService';
 // import {Redirect} from "react-router-dom";
 
 class CartProduct extends React.Component{
-    store = Store.getState();
+    // store = Store.getState();
 
     // componentDidMount() {
     //   Store.subscribe(() => this.forceUpdate());
