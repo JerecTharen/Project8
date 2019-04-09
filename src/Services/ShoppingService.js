@@ -50,7 +50,7 @@ function reducer(state, action){
             }
             else return item;
         });
-        return newCart;
+        return {cart: newCart};
     }
     else if(action.type === 'DELETE_FROM_CART'){
         return{

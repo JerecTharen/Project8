@@ -12,24 +12,14 @@ class Cart extends React.Component{
 
     // store = store.getState();
 
-    removeFromCart=(id)=>{
-        return ()=>{
-            store.dispatch({
-                type: "DELETE_FROM_CART",
-                id: id,
-            });
-        }
-    };
-
     render() {
-        // console.log(store.getState());
+        console.log(store.getState());
         const state = store.getState();
         let cartItems;
         if(state.cart.length > 0){
             cartItems = state.cart.map((cartItem)=>{
                 return <div key={cartItem.id}>
-                    <Product amount={cartItem.amount} productRedirect={this.props.productRedirect} title={cartItem.title} img={cartItem.img} price={cartItem.price} history={this.props.history} rating={cartItem.rating} itemId={cartItem.id} />
-                    <button onClick={this.removeFromCart(cartItem.id)}>REMOVE FROM CART</button>
+                    <Product cartItem={cartItem} history={this.props.history} />
                 </div>
             });
         }

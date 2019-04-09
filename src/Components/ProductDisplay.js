@@ -12,6 +12,8 @@ class ProductDisplay extends React.Component{
 
     inCart = false;
 
+    prodAmount = null;
+
     componentWillMount() {
         // console.log('hello there');
         this.theCart.cart.forEach((item)=>{
@@ -21,6 +23,7 @@ class ProductDisplay extends React.Component{
             if(item.id === Number(this.props.match.params.productId)){
                 // console.log('in if statement');
                 this.inCart = true;
+                this.prodAmount = item.amount;
             }
         });
         // store.subscribe(() => this.forceUpdate());
@@ -56,10 +59,19 @@ class ProductDisplay extends React.Component{
 
     removeFromCart = ()=>{
         store.dispatch({
-            type: "DELETE_FROM_CART",
+            type: 'DELETE_FROM_CART',
             id: this.state.product.id,
         });
         // this.resetState();
+    };
+
+    updateCart = ()=>{
+        let newQuant = document.getElementById('newQuant').value;
+        store.dispatch({
+            type: 'UPDATE_AMOUNT',
+            item: this.state.product,
+            amount: newQuant,
+        });
     };
 
     render() {
@@ -84,7 +96,11 @@ class ProductDisplay extends React.Component{
               <img src={this.state.product.img} alt={this.state.product.title} />
               <h3>${this.state.product.price}</h3>
               <h3>Rating: {this.state.product.rating}</h3>
+              <h3>Quantity: {this.prodAmount}</h3>
               <div className='controls'>
+                <label htmlFor='newQuant'>New Quantity</label>
+                <input type='number' name='newQuant' id='newQuant' placeholder={this.prodAmount} />
+                <button onClick={this.updateCart}>UPDATE</button>
                 <button onClick={this.removeFromCart}>REMOVE FROM CART</button>
               </div>
             </div>
