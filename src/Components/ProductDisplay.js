@@ -11,10 +11,6 @@ class ProductDisplay extends React.Component{
 
     // theCart = store.getState();
 
-    inCart = false;
-
-    prodAmount = null;
-
     componentWillMount() {
         // store.subscribe(() => this.forceUpdate());
         // console.log('hello there');
@@ -55,10 +51,9 @@ class ProductDisplay extends React.Component{
     };
 
     removeFromCart = ()=>{
-        let theId = this.state.product.id;
         store.dispatch({
             type: 'DELETE_FROM_CART',
-            id: theId
+            id: this.state.product.id,
         });
         // this.resetState();
     };
@@ -73,19 +68,21 @@ class ProductDisplay extends React.Component{
     };
 
     render() {
-        let theCart = store.getState();
+        let inCart = false;
+        let prodAmount = null;
+        const theCart = store.getState();
         theCart.cart.forEach((item)=>{
             // console.log('iterating for:', item);
             // console.log(this.props.match.params.productId);
             // console.log(item.id === Number(this.props.match.params.productId));
             if(item.id === Number(this.props.match.params.productId)){
                 // console.log('in if statement');
-                this.inCart = true;
-                this.prodAmount = item.amount;
+                inCart = true;
+                prodAmount = item.amount;
             }
         });
       // console.log(this.theCart);
-        if(this.state.product && !this.inCart){
+        if(this.state.product && !inCart){
             return (
                 <div className='productDisplay'>
                     <h1>{this.state.product.title}</h1>
@@ -98,17 +95,17 @@ class ProductDisplay extends React.Component{
                 </div>
             )
         }
-        else if(this.state.product && this.inCart){
+        else if(this.state.product && inCart){
           return (
             <div className='productDisplay'>
               <h1>{this.state.product.title}</h1>
               <img id='prodDisplayImg' src={this.state.product.img} alt={this.state.product.title} />
               <h3>${this.state.product.price}</h3>
               <h3>Rating: {this.state.product.rating}</h3>
-              <h3>Quantity: {this.prodAmount}</h3>
+              <h3>Quantity: {prodAmount}</h3>
               <div className='controls'>
                 <label htmlFor='newQuant'>New Quantity: </label>
-                <input type='number' name='newQuant' id='newQuant' placeholder={this.prodAmount} />
+                <input type='number' name='newQuant' id='newQuant' placeholder={prodAmount} />
                 <button onClick={this.updateCart}>UPDATE</button>
                 <button onClick={this.removeFromCart}>REMOVE FROM CART</button>
               </div>
