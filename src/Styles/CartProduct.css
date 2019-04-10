@@ -6,3 +6,25 @@
 .cartItemControls input{
     width: 25%;
 }
+
+.cartProduct{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: black solid 3px;
+    height: 20em;
+    width: 20em;
+    margin: 1em;
+    text-align: center;
+}
+
+.cartProduct img{
+    height: 10em;
+    width: auto;
+    margin-top: .25em;
+}
+
+.cartProduct h3, .cartProduct p{
+    margin: 0;
+    padding: 0;
+}

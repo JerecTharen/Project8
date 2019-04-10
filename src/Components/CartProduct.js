@@ -42,9 +42,9 @@ class CartProduct extends React.Component{
         // console.log('props is:', this.props);
         // console.log('testing: ', this.props.anotherTest, this.props.blue);
         return (
-            <div className='product'>
-                <h3>{this.props.cartItem.title}</h3>
+            <div className='cartProduct'>
                 <img onClick={this.displayProduct} src={this.props.cartItem.img} alt={this.props.cartItem.title} />
+                <h3>{this.props.cartItem.title}</h3>
                 <p>Price: ${this.props.cartItem.price}</p>
                 <p>Rating: {this.props.cartItem.rating}</p>
                 <p>Quantity: {this.props.cartItem.amount}</p>

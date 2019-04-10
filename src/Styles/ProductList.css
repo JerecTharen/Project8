@@ -2,14 +2,30 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
 }
 
 .productList .productDisplay{
     flex-wrap: wrap;
     flex-direction: row;
+    width: 90%;
+    margin: 0 auto;
 }
 
 img{
     width: 10em;
     height: auto;
+}
+
+.cart{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cartList{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
 }

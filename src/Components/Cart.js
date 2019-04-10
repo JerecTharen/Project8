@@ -28,9 +28,11 @@ class Cart extends React.Component{
             cartItems = <h3>Your cart is empty. Please return to the product list page!</h3>
         }
         return(
-            <div className='productList'>
+            <div className='cart'>
                 <h1>Shopping Cart</h1>
-                {cartItems}
+                <div className='cartList'>
+                    {cartItems}
+                </div>
             </div>
         )
     }
