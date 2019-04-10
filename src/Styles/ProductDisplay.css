@@ -1,4 +1,14 @@
 #prodDisplayImg{
-    width: 20em;
-    height: auto;
+    width: auto;
+    height: 20em;
+}
+
+.productDisplay h1, .productDisplay h3{
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.controls{
+    margin-top: .5em;
 }
