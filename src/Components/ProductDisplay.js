@@ -1,4 +1,5 @@
 import React from 'react';
+import '../Styles/ProductDisplay.css';
 
 import store from '../Services/ShoppingService';
 

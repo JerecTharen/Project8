@@ -1,0 +1,8 @@
+.cartItemControls{
+    border: black solid 2px;
+    margin: .5em;
+    padding: .25em;
+}
+.cartItemControls input{
+    width: 25%;
+}

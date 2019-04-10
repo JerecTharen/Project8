@@ -1,5 +1,6 @@
 import React from 'react';
 import Store from '../Services/ShoppingService';
+import '../Styles/CartProduct.css';
 // import {Redirect} from "react-router-dom";
 
 class CartProduct extends React.Component{

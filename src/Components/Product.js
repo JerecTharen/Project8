@@ -1,4 +1,5 @@
 import React from 'react';
+import '../Styles/Product.css';
 // import Store from '../Services/ShoppingService';
 // import {Redirect} from "react-router-dom";
 
@@ -24,8 +25,8 @@ class Product extends React.Component{
         // console.log('testing: ', this.props.anotherTest, this.props.blue);
         return (
             <div onClick={this.displayProduct} className='product'>
-                <h3>{this.props.title}</h3>
                 <img src={this.props.img} alt={this.props.title} />
+                <h3>{this.props.title}</h3>
                 <p>Price: ${this.props.price}</p>
                 <p>Rating: {this.props.rating}</p>
             </div>
