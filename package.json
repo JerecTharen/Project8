@@ -2,7 +2,9 @@
   "name": "ecommerce-project8",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://www.jacobbennett.me/Project8",
   "dependencies": {
+    "gh-pages": "^2.0.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.0",
