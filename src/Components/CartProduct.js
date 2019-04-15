@@ -32,7 +32,7 @@ class CartProduct extends React.Component{
         // console.log(this.props.prodRed);
         // let itemId = this.props.itemId;
         // this.props.prodRed(itemId);
-        let redUrl = `/product/${this.props.cartItem.id}`;
+        let redUrl = `/Project8/product/${this.props.cartItem.id}`;
         // console.log(redUrl);
         // return <Redirect to={redUrl}/>
         this.props.history.push(redUrl);

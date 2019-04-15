@@ -22,13 +22,13 @@ class App extends Component {
         <Router>
             <ul className='navBar'>
                 <li><h1>E-Commerce</h1></li>
-                <li><Link to='/'>Product List</Link></li>
-                <li><Link to='/cart'>Shopping Cart</Link></li>
+                <li><Link to='/Project8/'>Product List</Link></li>
+                <li><Link to='/Project8/cart'>Shopping Cart</Link></li>
 
             </ul>
-            <Route path='/' exact render={({history})=> <ProductList history={history} />} />
-            <Route path='/cart' render={({history})=> <Cart  history={history} />} />
-            <Route path='/product/:productId' render={({history, match})=> <ProductDisplay  history={history} match={match} />} />
+            <Route path='/Project8/' exact render={({history})=> <ProductList history={history} />} />
+            <Route path='/Project8/cart' render={({history})=> <Cart  history={history} />} />
+            <Route path='/Project8/product/:productId' render={({history, match})=> <ProductDisplay  history={history} match={match} />} />
         </Router>
       </div>
     );
